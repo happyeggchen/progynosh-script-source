@@ -59,18 +59,14 @@ end
 if [ "$argv[1]" = "" ]
   set -g saeialbaridaddr '127.0.0.1/32'
 end
-  while [ "0" = "0" ]
-    socat TCP-LISTEN:$saeialbaridport,range=$saeialbaridaddr stdout
-  end
+  socat TCP-LISTEN:$saeialbaridport,range=$saeialbaridaddr stdout
 end
 function listen-uset -d "Saeialbarid api socket server"
 set -g saeialbaridsocketaddr
 if [ "$argv[1]" = "" ]
   set -g saeialbaridsocketaddr '/tmp/saeialbarid.sock'
 end
-  while [ "0" = "0" ]
-    socat UNIX-LISTEN:$saeialbaridsocketaddr stdout
-  end
+  socat UNIX-LISTEN:$saeialbaridsocketaddr stdout
 end
 function saeialbarid
 switch $argv[1]
