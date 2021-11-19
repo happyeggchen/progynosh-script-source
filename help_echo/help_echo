@@ -4,6 +4,6 @@ function help_echo
   echo "(./)app argv[1]"
   set_color normal
   echo " -argv[1]:the command to execute"
-  echo "  -Available:
+  echo "  -Available:"
   echo "======================================"
 end
