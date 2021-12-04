@@ -81,7 +81,6 @@ function crescent-backend -d "detect backend for crescent"
     end
   end
 end
-echo Build_Time_UTC=2021-12-04_04:25:39
 function crescent
 switch $argv[1]
 case choose
