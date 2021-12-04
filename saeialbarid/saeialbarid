@@ -16,58 +16,6 @@ if [ "$argv[1]" = "" ]
 end
   socat - UNIX:$saeialbaridsocketaddr
 end
-function help_echo
-  set_color cyan
-  echo "Saeialbarid a api server | RuzhTaiWan [R] 2017-2021"
-  set_color normal
-  echo "==========Help Documentation=========="
-  set_color green
-  echo "(./)saeialbarid argv[1]
-            serve/client a api server"
-  set_color normal
-  echo "    -Available:
-              s argv[2] (serve a api server)
-                -Available:
-                  uset argv[3]
-                    Communicate through unix socket
-                      argv[3]:socket location,default is /tmp/saeialbarid.sock
-                  stcp argv[3] argv[4]
-                    Communicate through tcp
-                      argv[3]:Tcp listen addr,default is 127.0.0.1/32
-                      argv[4]:Tcp listen port,default is 8080
-              c argv[2] (client a api server)
-                -Available:
-                  uset argv[3]
-                    Communicate through unix socket
-                      argv[3]:socket location,default is /tmp/saeialbarid.sock
-                  stcp argv[3] argv[4]
-                    Communicate through tcp
-                      argv[3]:Tcp listen addr,default is 127.0.0.1
-                      argv[4]:Tcp listen port,default is 8080"
-  set_color green
-  echo "(./)saeialbarid h
-            view this help doc"
-  set_color normal
-  echo "========================================"
-end
-function listen-stcp -d "Saeialbarid api server"
-set -g saeialbaridport $argv[2]
-set -g saeialbaridaddr $argv[1]
-if [ "$argv[2]" = "" ]
-  set -g saeialbaridport '8080'
-end
-if [ "$argv[1]" = "" ]
-  set -g saeialbaridaddr '127.0.0.1/32'
-end
-  socat TCP-LISTEN:$saeialbaridport,range=$saeialbaridaddr stdout
-end
-function listen-uset -d "Saeialbarid api socket server"
-set -g saeialbaridsocketaddr $argv[1]
-if [ "$argv[1]" = "" ]
-  set -g saeialbaridsocketaddr '/tmp/saeialbarid.sock'
-end
-  socat UNIX-LISTEN:$saeialbaridsocketaddr stdout
-end
 function saeialbarid
 	switch $argv[1]
 	case s
@@ -76,8 +24,6 @@ function saeialbarid
 	      listen-uset $argv[3]
 	    case stcp
 	      listen-stcp $argv[3] $argv[4]
-	    case h help '*'
-	      help_echo
 	  end
 	case c
 	  switch $argv[2]
@@ -85,10 +31,6 @@ function saeialbarid
 	      client-uset $argv[3]
 	    case stcp
 	      client-stcp $argv[3] $argv[4]
-	    case h help '*'
-	      help_echo
 	  end
-	case h help '*'
-	  help_echo
 	end
 end
