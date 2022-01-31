@@ -1,5 +1,3 @@
-#!/usr/bin/env fish
-
 function client-stcp -d "Saeialbarid api client"
 set -g saeialbaridport $argv[2]
 set -g saeialbaridaddr $argv[1]
