@@ -9,7 +9,7 @@ crescent
           argv[2] -> crescent_title
           argv[3] -> crescent_title_gauge
           argv[4] -> crescent_gauge_percent
-        choose argv[2] argv[3] argv[4+]
+        choose(list) argv[2] argv[3] argv[4+]
           argv[2] -> crescent_title
           argv[3] -> crescent_title_menu
           argv[4] -> crescent_menu_list
