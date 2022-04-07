@@ -24,21 +24,9 @@ function size
         set size1239_printamount (math -s2 $size1239_calcamount/8796093022208)
         set size1239_scale TB
     end
-    if [ "$size1239_calcamount" -ge 9.007199254741E+15 ]
-        set size1239_printamount (math -s2 $size1239_calcamount/9.007199254741E+15)
+    if [ "$size1239_calcamount" -ge 9007199254741000 ]
+        set size1239_printamount (math -s2 $size1239_calcamount/9007199254741000)
         set size1239_scale PB
-    end
-    if [ "$size1239_calcamount" -ge 9.2233720368548E+18 ]
-        set size1239_printamount (math -s2 $size1239_calcamount/9.2233720368548E+18)
-        set size1239_scale EB
-    end
-    if [ "$size1239_calcamount" -ge 9.4447329657393E+21 ]
-        set size1239_printamount (math -s2 $size1239_calcamount/9.4447329657393E+21)
-        set size1239_scale ZB
-    end
-    if [ "$size1239_calcamount" -ge 9.671406556917E+24 ]
-        set size1239_printamount (math -s2 $size1239_calcamount/9.671406556917E+24)
-        set size1239_scale ZB
     end
     echo $size1239_printamount $size1239_scale
 end
